@@ -4,8 +4,7 @@
   "description": "Application to manage and organize GitHub code reviews",
   "main": "index.js",
   "scripts": {
-    "start": "node ./build/app.js",
-    "build": "tsc && mkdir -p build/templates && cp -r src/templates/* build/templates/",
+    "start": "tsc && node ./build/index.js",
     "dev": "nodemon -L --watch './src/**/*.ts' --exec \"ts-node\" ./src/index.ts",
     "format": "prettier --write \"src/**/*.{js,ts,json}\"",
     "lint": "eslint \"src/**/*.{js,ts}\" --quiet"
