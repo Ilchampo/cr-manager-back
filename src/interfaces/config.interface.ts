@@ -7,5 +7,6 @@ export interface IMongoAtlasConfig {
 export interface IConfig {
   port?: string | number;
   corsOrigins?: string | string[];
+  jwtSecret?: string;
   mongo: IMongoAtlasConfig;
 }

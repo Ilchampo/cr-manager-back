@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
+import config from '../config/config';
+
 export const authMiddleware = (
   req: Request,
   res: Response,
@@ -13,7 +15,7 @@ export const authMiddleware = (
       .send({ message: 'Access denied. No token provided.' });
   }
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+    const decoded = jwt.verify(token, config.jwtSecret ?? '');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (req as any).user = decoded;
     next();

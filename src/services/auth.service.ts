@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
+import config from '../config/config';
 import type {
   ILoginParams,
   ILoginResponse,
@@ -18,11 +19,10 @@ const login = async (params: ILoginParams): Promise<ILoginResponse> => {
     if (!isMatch) {
       throw new Error('Invalid username or password');
     }
-    const token = jwt.sign(
-      { userId: user._id },
-      process.env.JWT_SECRET as string,
-      { expiresIn: '1h' },
-    );
+    const token = jwt.sign({ userId: user._id }, config.jwtSecret ?? '', {
+      expiresIn: '1h',
+    });
+
     return { user, token };
   } catch (error) {
     throw new Error(`Error logging in: ${error as string}`);

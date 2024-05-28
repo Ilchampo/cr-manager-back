@@ -16,12 +16,11 @@ export const createUser = async (params: ICreateUserParams): Promise<IUser> => {
     if (existingUser) {
       throw new Error('Username already taken');
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
       firstname,
       lastname,
       username,
-      password: hashedPassword,
+      password,
     });
     return await user.save();
   } catch (error) {
@@ -80,7 +79,7 @@ export const updateUserPassword = async (
     if (!isMatch) {
       throw new Error('Current password is incorrect');
     }
-    user.password = await bcrypt.hash(newPassword, 10);
+    user.password = newPassword;
     const savedUser = await user.save();
     return savedUser.toObject();
   } catch (error) {
