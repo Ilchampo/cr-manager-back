@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "b8d24655-f3db-4e81-9289-6bd0c6426435",
+		"name": "CR Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11176037"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstname\": \"John\",\n  \"lastname\": \"Doe\",\n  \"username\": \"johndoe\",\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU2NDgzNjM4MzY1MTRjNTQxMGIwYjciLCJpYXQiOjE3MTY5MzEwMjksImV4cCI6MTcxNjkzNDYyOX0.0aw_k39jVO8X1qFQd7eqMckZnUt5PkXWDkTCEpQav6c"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstname\": \"Jane\",\n  \"lastname\": \"Doe\",\n  \"username\": \"janedoe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currentPassword\": \"password123\",\n  \"newPassword\": \"newpassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/:userId/password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId",
+								"password"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pull Request",
+			"item": [
+				{
+					"name": "Create Pull Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ticket\": \"https://example.com/ticket/123\",\n  \"github\": \"https://github.com/example/repo/pull/123\",\n  \"developer\": \"developerId\",\n  \"reviewers\": [\"reviewerId1\", \"reviewerId2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/pullRequests",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"pullRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Pull Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/pullRequests",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"pullRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pull Request By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/pullRequests/:pullRequestId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"pullRequests",
+								":pullRequestId"
+							],
+							"variable": [
+								{
+									"key": "pullRequestId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pull Request Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"On-Review\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/pullRequests/:pullRequestId/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"pullRequests",
+								":pullRequestId",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "pullRequestId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pull Request Information",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ticket\": \"https://example.com/ticket/124\",\n  \"github\": \"https://github.com/example/repo/pull/124\",\n  \"reviewers\": [\"reviewerId1\", \"reviewerId3\"],\n  \"functionality\": \"Applied\",\n  \"solid\": \"Applied\",\n  \"sonarQube\": \"Applied\",\n  \"jestTest\": \"Applied\",\n  \"tdd\": \"Applied\",\n  \"issuesFound\": 2,\n  \"issues\": [\"Issue 1\", \"Issue 2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/pullRequests/:pullRequestId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"pullRequests",
+								":pullRequestId"
+							],
+							"variable": [
+								{
+									"key": "pullRequestId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pull Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/pullRequests/:pullRequestId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"pullRequests",
+								":pullRequestId"
+							],
+							"variable": [
+								{
+									"key": "pullRequestId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Release",
+			"item": [
+				{
+					"name": "Create Release",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"V1.10.2\",\n  \"releaseDate\": \"2023-12-01\",\n  \"pullRequests\": [\"pullRequestId1\", \"pullRequestId2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/releases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"releases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Releases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/releases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"releases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Release by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/releases/:releaseId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"releases",
+								":releaseId"
+							],
+							"variable": [
+								{
+									"key": "releaseId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Release Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"Approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/releases/:releaseId/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"releases",
+								":releaseId",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "releaseId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Release Information",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"V1.10.3\",\n  \"releaseDate\": \"2023-12-15\",\n  \"pullRequests\": [\"pullRequestId3\", \"pullRequestId4\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/releases/:releaseId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"releases",
+								":releaseId"
+							],
+							"variable": [
+								{
+									"key": "releaseId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Release",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/releases/:releaseId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"releases",
+								":releaseId"
+							],
+							"variable": [
+								{
+									"key": "releaseId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"johndoe\",\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "www.localhost:3000"
+		}
+	]
+}
